@@ -18,8 +18,18 @@ public class Users {
     String lastName;
 
     @Embedded
-            @AttributeOverride(name = "street",column = @Column(name = "billing_adress"))
     Adress adress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="street",column=@Column(name="BILLING_STREET")),
+              @AttributeOverride(name="city.city",column = @Column(name="BILLING_CITY")),
+              @AttributeOverride(name="city.zipcode",column = @Column(name="BILLING_ZIPCODE")),
+              @AttributeOverride(name="city.country",column = @Column(name="BILLING_COUNTRY")),
+    })
+    Adress billingAdress;
+
+
 
 
 
@@ -45,5 +55,13 @@ public class Users {
 
     public Adress getAdress() {
         return adress;
+    }
+
+    public void setBillingAdress(Adress billingAdress) {
+        this.billingAdress = billingAdress;
+    }
+
+    public Adress getBillingAdress() {
+        return billingAdress;
     }
 }

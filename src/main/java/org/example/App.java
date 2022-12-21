@@ -27,6 +27,10 @@ public class App
         Adress adress=new Adress("Rosvelta",city);
         user.setAdress(adress);
 
+        City city2=new City(3456,"USA","Waszytgton");
+        Adress adress2=new Adress("Rosvelta",city2);
+        user.setBillingAdress(adress2);
+
         em.persist(user);
 
         t.commit();
