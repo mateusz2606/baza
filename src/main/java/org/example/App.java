@@ -18,10 +18,17 @@ public class App
         EntityManager em=emf.createEntityManager();
         EntityTransaction t=em.getTransaction();
         t.begin();
+
         Users user=new Users();
         user.setName("mateusz");
         user.setLastName("semklo");
+
+        City city=new City(3456,"USA","Waszytgton");
+        Adress adress=new Adress("Rosvelta",city);
+        user.setAdress(adress);
+
         em.persist(user);
+
         t.commit();
         em.close();
     }
